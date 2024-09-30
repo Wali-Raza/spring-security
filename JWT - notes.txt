@@ -1,0 +1,26 @@
+JWT(Jason web Token):
+	Encryption -> normal text to cypher text
+	Decryption -> cypher text to noraml text
+Symetric Cryptoghraphy -> in this a symetric key(same key) is shared between both A and B user to decrypt the Text.
+	problem : The key need to be shared with both A and B before the communication
+
+Asymetric Cryptograph -> veryone will have their own private key ,and public key (known to evryone)
+		-> if A wants to send data to B then A will use encrypthe data using B's public key and then B will 
+		Decrypt the data using his own private key 
+	problem: lets say A want to send message to B and A encrypt the data using B's public key which C also know and in between C uses B's 
+	         public key and decrypt the data using B's public key and manipulate data and it to B,now B will get C's encrypted data which is
+		 melicious,which means in asymetric cryptography the sender is unknown ,to resolve identity issue we use Digital signatus
+ Digital Signatue: A will use B's public key to encryt and then A will use his private to encrypt the data again ,when the data will reach to
+		   B ,B will use A's public key to decrypt and his own Private key to decrypt again and get the data,
+
+
+Filter: filters are java Class that intercepts and process http requests and responses bofore they reach or leave the controller
+
+synchronous vs asynchronous :(@EnableWebSecurity vs @EnableWebFluxSecurity) -> service A calls to service B and wait for the response of service B
+			     is called synchronous communication,whereas if service A does not wait for the response of Service B then 
+			     its called Asynchronous communication,in Synchronous communication we use @EnableWebSecurity whereas in Asynchronous communication
+			     we use @EnableWebFluxSecurity	
+CSRF: any melicious website using the session of user try to access any website
+      When we try to use any third party website it can use out session an can manipulate data,to get rid of this we use CSRF token,bcz even thought if that website has our
+      Session ID but it wont have csrf token,but what if we dont even allow any other website to use our server.for that case we do same site strict.
+    another solution is that make our every request statless.
