@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.jwtdemo.spring_security.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
