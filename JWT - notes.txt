@@ -24,3 +24,11 @@ CSRF: any melicious website using the session of user try to access any website
       When we try to use any third party website it can use out session an can manipulate data,to get rid of this we use CSRF token,bcz even thought if that website has our
       Session ID but it wont have csrf token,but what if we dont even allow any other website to use our server.for that case we do same site strict.
     another solution is that make our every request statless.
+UserDetalsService -> responsible to create user using 'UserDetails' class in which we have a class 'User' which has builder method which returs UserDetals
+Reading User form db:
+    if we want to read user from db then we have to give imlementation of AuthenticationProvider which has a method authenticate()
+    but we have to use class DaoAuthenticationProvider and set User Details and set out Encoded Passoword.
+    :DaoAuthenticationProvider has a mehtod setUserDetailsService() which accepts the object of UserDetailService
+    :UserDetailsService is an interface which has a method loadUserByuserName() so we have to implement it,for this we'll create a class MyUserDetailService
+    which will implement UserDetailsService and well give implementation of loadUserByUserNamer ()
+    :Now we have to get user from db so we have to connect db and get user using JPA.

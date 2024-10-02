@@ -1,0 +1,3 @@
+Hasing: one way encryption(once the usename and passowrd are converted to encrypted data can get it back,but we can repeat the cycle)
+
+Bcrypt:
