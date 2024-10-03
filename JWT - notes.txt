@@ -32,3 +32,5 @@ Reading User form db:
     :UserDetailsService is an interface which has a method loadUserByuserName() so we have to implement it,for this we'll create a class MyUserDetailService
     which will implement UserDetailsService and well give implementation of loadUserByUserNamer ()
     :Now we have to get user from db so we have to connect db and get user using JPA.
+
+UsernamePasswordFilter
