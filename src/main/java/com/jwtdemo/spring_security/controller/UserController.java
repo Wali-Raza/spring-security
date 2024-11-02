@@ -1,6 +1,7 @@
 package com.jwtdemo.spring_security.controller;
 
 import com.jwtdemo.spring_security.config.SecurityConfig;
+import com.jwtdemo.spring_security.model.Token;
 import com.jwtdemo.spring_security.model.User;
 import com.jwtdemo.spring_security.service.JwtService;
 import com.jwtdemo.spring_security.service.UserService;
@@ -41,13 +42,16 @@ public class UserController {
     }
 
     @PostMapping("login")
-    public String login(@RequestBody User user) {
+    public Token login(@RequestBody User user) {
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(user.getUsername());
-        } else {
-            return "failure";
+            Token token=new Token();
+            token.setAccess_token(jwtService.generateToken(user.getUsername()));
+//            String access_token=
+            return token;
         }
+//
+        return null;
     }
 }
