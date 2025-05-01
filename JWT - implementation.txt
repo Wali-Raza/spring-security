@@ -1,4 +1,24 @@
 ------------------------------------JWT - Token Implementation------------------------
 
+Filters: filters are used before the actual controller for bydefault there is DefaultSecurityChain which is called.when a client sends request it goes throguh servlet controller
+         and then multiple filters are called before the actual controller,like before the actual filter is called,the filters like checking the roles and username,
+         and many things are checked.
+    -> there are many security filter like BasicAuthenticationFilter,AuthorizationFilterCsrfFilter
+
+CSRF:the safest method among all is the Get method which doesnt cahnge any record in db ,so in the case of Get we dont need to block the CSRF,but in the case of PUT,POST,DELETE
+     we do need to block the CSR.Once we login our session is saved by in the cookies but any malicious website can use out sessionID and can hack any payment website so
+     spring security in the case of PUT,POST,Delete doesnt allow it,we have to send a token with every request,the CSRF token
+     -we send CSRF token in header 'X-CSRF-Token' with its value
+Q:but whta if we just dont allow any otherwebsite to use our serssionID?what fi we dont even allow anyother website to request our server?what if we disbale cross site access?
+  in this case we do same-site-strict and disable csrf
+- For this we create a configration class in that we return a filter and annotate it with @Configuration and @EnableWebSecurity,now we create a bean which returns SecurityFilterChain object
+  --bcz were changing the default configuration thats why we have to manually tell the spring using @EnableWebSecuirty that we're changing the security configuraion
+    so what we do is that we disable the CSRF and authenticate every request and make it stateless
+
+* there were two solution for any malicious website to stop the misuse of our serssion
+  -one was that we send csrf-token with every request second one is that we create new session for every request
+   -for the first one where we send csrf-token with every request we needed to get the token first and use it with the request and send it
+   -for the second solution we make the session stateless so for every request there will be new session in that case we can secure our website
+
 
 

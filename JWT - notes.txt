@@ -34,3 +34,4 @@ Reading User form db:
     :Now we have to get user from db so we have to connect db and get user using JPA.
 
 UsernamePasswordFilter
+RequestMatchers vs PathcMatchers
