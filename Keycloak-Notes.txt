@@ -1,0 +1,18 @@
+Authentiaction using keycloak:
+there are two ways using which we do authentication pusing 'oauth2 resource library' one is jwt and second is opaqueToken,in JWT web application does not send request to server to verify the
+Token but in opaqueToken the token is verified means it hits the keycloack server for verification of Token.
+-In JWT authentication if the session is logged out still the Token is verified means the token is valid but then authentication is not happened bcz the JWT has
+not asked keycloak to verify the token but just validated the token(bcz the token is valid so jwt is works fine)
+Authorization using Keycloak:
+-Same as authentication for authorization there are two ways using which we do authentication pusing 'oauth2 resource library'.
+-the difference is that in Authorization neither JWT nor the opaqueToken hit the keycloak for verifying the Token instead they do the authorization within the
+application itself
+-for Authorization we have two ways one is method level authorization and second is security filter level authorization
+->Default authentications convertor roles => profile,email
+-> Int JWT-Method level authorization the incoming JWT token from the keycloak is converted into springboot oauth2 format using JWTAuthenticationConverter
+-> first it retrives the Roles from coming Token
+-> from the JWT Token it checks whether it contains Scope or SCP property then extracts it like "scope":"profile email"
+->then it creates and array of roles like roles=["profile","scope"] and add the prefix SCOPE with roles
+-> like roles=["SCOPE_profile","SCOPE_email"] ,but then incoming token contains the manager role also what about this? hence JWTAuthenticationConverter of Springboot of
+oauth2 says that there is nothing like manager role these are the only roles provided by the authentication token hence we need to write our own JWTAuthenticationConverter
+
