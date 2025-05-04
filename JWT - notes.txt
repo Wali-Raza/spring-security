@@ -2,7 +2,9 @@ JWT(Jason web Token):
 	Encryption -> normal text to cypher text
 	Decryption -> cypher text to noraml text
 Symetric Cryptoghraphy -> in this a symetric key(same key) is shared between both A and B user to decrypt the Text.
-	problem : The key need to be shared with both A and B before the communication
+	problem : The key need to be shared with both A and B before the communication also if there are 5 peoples then for A
+	to communicate with others they need to have to have different keys and managing all these keys is difficult
+	-problem with symetric cryptography is that managing the key becomes tedous and difficult
 
 Asymetric Cryptograph -> veryone will have their own private key ,and public key (known to evryone)
 		-> if A wants to send data to B then A will use encrypthe data using B's public key and then B will 
